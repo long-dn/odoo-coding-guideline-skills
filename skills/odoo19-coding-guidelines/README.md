@@ -8,7 +8,7 @@ This skill helps assistants write and review Odoo modules with the official Odoo
 
 - Module structure and file naming.
 - XML record formatting, ids, data files, menus, views, and templates.
-- Python readability, idioms, imports, comments, and translations.
+- Python readability, single-quote string style, idioms, imports, comments, and translations.
 - Translation file rule: do not create handwritten `i18n/*.po`; use Odoo export.
 - Odoo model, field, method, and class ordering conventions.
 - JavaScript and OWL placement and review cues.

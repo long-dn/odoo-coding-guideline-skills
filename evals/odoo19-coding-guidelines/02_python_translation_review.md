@@ -8,7 +8,7 @@ Review this Odoo model method:
 def action_done(self):
     msg = _("Order ") + self.name + _(" is done")
     partner_id = self.partner_id
-    self.write({"state": "done"})
+    self.write({'state': 'done'})
     return msg
 ```
 

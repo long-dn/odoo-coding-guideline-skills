@@ -20,7 +20,7 @@ Source: official Odoo 19 coding guidelines, "Symbols and Conventions" section.
 - Do not name a recordset variable `partner_id`; use `partner` or `partners`.
 
 ```python
-Partner = self.env["res.partner"]
+Partner = self.env['res.partner']
 partners = Partner.browse(partner_ids)
 partner_id = partners[:1].id
 ```

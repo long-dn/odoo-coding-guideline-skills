@@ -7,7 +7,7 @@ Review this Odoo controller/model flow for guideline issues:
 ```python
 def action_force_approve(self, ids):
     records = self.sudo().browse(ids)
-    records.write({"state": "approved"})
+    records.write({'state': 'approved'})
 ```
 
 ## What we're testing

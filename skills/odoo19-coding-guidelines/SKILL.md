@@ -32,7 +32,7 @@ Load only the reference files relevant to the current task:
 |---|---|
 | Addon tree, filenames, manifests, directories | `references/module_structure.md` |
 | XML records, menus, actions, views, templates | `references/xml.md` |
-| Python style, method structure, imports, translations | `references/python.md` |
+| Python style, string quotes, method structure, imports, translations | `references/python.md` |
 | Translation files, `i18n/`, `.po`, `.pot`, translation export | `references/translations.md` |
 | Odoo model names, fields, method naming, class ordering | `references/odoo_conventions.md` |
 | JavaScript modules, services, components, comments | `references/javascript.md` |
@@ -54,7 +54,7 @@ For a code review, load the domain references matching the changed files plus `r
 
 - Module files use lowercase `[a-z0-9_]` names and standard directories.
 - XML records use consistent attribute order, grouped models, stable external ids, and minimal `<data>` wrappers.
-- Python favors readability, meaningful names, idiomatic dict/list handling, and clear comments only where useful.
+- Python favors readability, single-quoted strings, meaningful names, idiomatic dict/list handling, and clear comments only where useful.
 - Odoo names follow conventions: singular model names, `_id`/`_ids` suffixes, `_compute_*`, `_onchange_*`, `_check_*`, `action_*`.
 - Model classes are ordered from private attributes to defaults, fields, constraints, compute methods, onchange/constraints, CRUD, actions, then business methods.
 - Translatable strings keep interpolation inside `_()` and use named placeholders when multiple values are present.
