@@ -10,7 +10,7 @@ This skill helps assistants write and review Odoo modules with the official Odoo
 - XML record formatting, ids, data files, menus, views, templates, and Font Awesome icon accessibility.
 - Python readability, single-quote string style, idioms, imports, comments, and translations.
 - Translation file rule: do not create handwritten `i18n/*.po`; use Odoo export.
-- Odoo model, field, method, and class ordering conventions.
+- Odoo model, field, tracking, method, and class ordering conventions.
 - JavaScript and OWL placement and review cues.
 - SCSS naming, variables, selector hygiene, and property order.
 - Security review for public methods, raw SQL, domains, HTML, eval, and dynamic field access.

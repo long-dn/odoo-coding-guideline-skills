@@ -4,7 +4,7 @@ description: >-
   Official Odoo 19 coding guideline reference for AI coding agents. Use this
   skill before writing, modifying, or reviewing Odoo modules when the work
   involves module layout, file naming, XML records, view accessibility, Python style, ORM
-  conventions, model/method/field naming, translations, `i18n/`, `.po`, `.pot`,
+  conventions, model/method/field naming, field tracking, translations, `i18n/`, `.po`, `.pot`,
   translation export, JavaScript, SCSS, or security pitfalls. Trigger on Odoo
   coding requests such as "create an addon", "review this module", "fix this
   XML view", "write a model method", "add translations", "create a po file",
@@ -57,6 +57,7 @@ For a code review, load the domain references matching the changed files plus `r
 - Font Awesome `<i class="fa ...">` icons in XML/QWeb have accessible text or a `title` on the icon, parent, or descendant.
 - Python favors readability, single-quoted strings, meaningful names, idiomatic dict/list handling, and clear comments only where useful.
 - Odoo names follow conventions: singular model names, `_id`/`_ids` suffixes, `_compute_*`, `_onchange_*`, `_check_*`, `action_*`.
+- Use field `tracking` only on models inheriting `mail.thread` or a mixin/model that inherits it; `mail.activity.mixin` alone is not enough.
 - Model classes are ordered from private attributes to defaults, fields, constraints, compute methods, onchange/constraints, CRUD, actions, then business methods.
 - Translatable strings keep interpolation inside `_()` and use named placeholders when multiple values are present.
 - Do not manually create or edit `i18n/*.po`; use Odoo translation export/import workflows.

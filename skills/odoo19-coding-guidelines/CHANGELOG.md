@@ -1,5 +1,9 @@
 # Changelog - odoo19-coding-guidelines
 
+## [0.1.4] - 2026-04-27
+
+Clarify that field `tracking` requires `mail.thread`; `mail.activity.mixin` alone is not enough.
+
 ## [0.1.3] - 2026-04-27
 
 Add XML accessibility rule for Font Awesome icons requiring text or title metadata.

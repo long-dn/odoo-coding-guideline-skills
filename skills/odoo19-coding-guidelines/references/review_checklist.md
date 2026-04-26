@@ -22,6 +22,7 @@ Use this checklist before finalizing a change or when reviewing an Odoo module.
 - Names are meaningful and match Odoo conventions.
 - Python string literals use single quotes in new or modified code, except docstrings or cases where double quotes avoid escaping.
 - Field suffixes match field types.
+- Fields with `tracking=True` or `tracking=<sequence>` are only on models inheriting `mail.thread` or a mixin/model that inherits it.
 - Model class members are in conventional order.
 - Action methods use `self.ensure_one()` when single-record.
 - Translatable strings are built inside `_()` with appropriate placeholders.

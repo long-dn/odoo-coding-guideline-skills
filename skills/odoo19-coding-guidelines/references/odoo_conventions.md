@@ -32,6 +32,49 @@ partner_id = partners[:1].id
 - Boolean names should read naturally in conditions.
 - Avoid generic field names when the model has multiple similar concepts.
 
+## Field parameters
+
+Use field parameters only when the target model supports them.
+
+### `tracking`
+
+Only add `tracking=True` or `tracking=<sequence>` on fields when the model inherits `mail.thread`, or inherits another mixin/model that itself inherits `mail.thread`.
+
+Good:
+
+```python
+class ApprovalCategory(models.Model):
+    _name = 'osp.approval.category'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+
+    state = fields.Selection(
+        selection=[('draft', 'Draft'), ('approved', 'Approved')],
+        default='draft',
+        tracking=True,
+    )
+```
+
+Avoid:
+
+```python
+class ApprovalCategory(models.Model):
+    _name = 'osp.approval.category'
+
+    state = fields.Selection(
+        selection=[('draft', 'Draft'), ('approved', 'Approved')],
+        default='draft',
+        tracking=True,
+    )
+```
+
+Important:
+
+- `mail.activity.mixin` alone adds activity behavior, not field value tracking validation.
+- If a model only inherits `mail.activity.mixin`, do not use field `tracking`.
+- Ensure the module depends on `mail` before adding `mail.thread`.
+- Do not override `_valid_field_parameter` merely to silence the warning. That hook is for framework-level extensions; for normal business models, either inherit `mail.thread` or remove `tracking`.
+- The warning to prevent is: `unknown parameter 'tracking'`.
+
 ## Method names
 
 - Compute methods: `_compute_<field_name>`.
@@ -64,6 +107,7 @@ Flag these in reviews:
 
 - Recordsets stored in variables ending with `_id`.
 - `Many2one` fields without `_id` or x2many fields without `_ids`.
+- `tracking=True` on a model that does not inherit `mail.thread`.
 - Action methods that silently process multi-record sets when the UI action is single-record.
 - New methods placed randomly in a model class instead of near their convention group.
 - Plural model technical names.
