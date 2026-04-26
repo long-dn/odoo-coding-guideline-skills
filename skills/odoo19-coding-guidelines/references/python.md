@@ -78,6 +78,7 @@ Guidelines:
 - Do not build translatable sentences by concatenating translated fragments.
 - Prefer `%`-style placeholders in Odoo translatable strings.
 - Keep HTML structure separate from translated text; load `security.md` when using `Markup`.
+- Do not create or patch `i18n/*.po` by hand after adding translatable strings. Use Odoo's translation export workflow; load `translations.md`.
 
 ## Review cues
 
@@ -87,4 +88,5 @@ Flag these in reviews:
 - Pointless temporary variables that make code longer without improving meaning.
 - `len(collection)` used only as a truthiness check.
 - Translated strings assembled through concatenation or interpolation outside `_()`.
+- Handwritten or manually patched `i18n/*.po` files in coding changes.
 - Comments explaining obvious assignments instead of business intent.

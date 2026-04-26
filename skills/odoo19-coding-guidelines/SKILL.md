@@ -4,13 +4,14 @@ description: >-
   Official Odoo 19 coding guideline reference for AI coding agents. Use this
   skill before writing, modifying, or reviewing Odoo modules when the work
   involves module layout, file naming, XML records, Python style, ORM
-  conventions, model/method/field naming, translations, JavaScript, SCSS, or
-  security pitfalls. Trigger on Odoo coding requests such as "create an addon",
-  "review this module", "fix this XML view", "write a model method", "add
-  translations", "style this Odoo component", or any file under an Odoo addons
-  directory. This skill complements syntax/version skills by focusing on
-  maintainability, naming, structure, security, and official coding style from
-  the Odoo 19 coding guidelines.
+  conventions, model/method/field naming, translations, `i18n/`, `.po`, `.pot`,
+  translation export, JavaScript, SCSS, or security pitfalls. Trigger on Odoo
+  coding requests such as "create an addon", "review this module", "fix this
+  XML view", "write a model method", "add translations", "create a po file",
+  "style this Odoo component", or any file under an Odoo addons directory. This
+  skill complements syntax/version skills by focusing on maintainability, naming,
+  structure, security, translation export discipline, and official coding style
+  from the Odoo 19 coding guidelines.
 ---
 
 # Odoo 19 Coding Guidelines
@@ -32,6 +33,7 @@ Load only the reference files relevant to the current task:
 | Addon tree, filenames, manifests, directories | `references/module_structure.md` |
 | XML records, menus, actions, views, templates | `references/xml.md` |
 | Python style, method structure, imports, translations | `references/python.md` |
+| Translation files, `i18n/`, `.po`, `.pot`, translation export | `references/translations.md` |
 | Odoo model names, fields, method naming, class ordering | `references/odoo_conventions.md` |
 | JavaScript modules, services, components, comments | `references/javascript.md` |
 | SCSS/CSS selectors, variables, property order | `references/scss.md` |
@@ -56,6 +58,7 @@ For a code review, load the domain references matching the changed files plus `r
 - Odoo names follow conventions: singular model names, `_id`/`_ids` suffixes, `_compute_*`, `_onchange_*`, `_check_*`, `action_*`.
 - Model classes are ordered from private attributes to defaults, fields, constraints, compute methods, onchange/constraints, CRUD, actions, then business methods.
 - Translatable strings keep interpolation inside `_()` and use named placeholders when multiple values are present.
+- Do not manually create or edit `i18n/*.po`; use Odoo translation export/import workflows.
 - JS and SCSS respect Odoo naming, structure, and formatting patterns.
 - Security-sensitive code avoids unsafe public methods, raw SQL, unsafe domain construction, unescaped HTML, unsafe eval, and dynamic attribute access.
 
@@ -63,5 +66,6 @@ For a code review, load the domain references matching the changed files plus `r
 
 - Do not turn guideline compliance into unrelated refactors.
 - Do not copy long text from Odoo documentation into user-facing answers.
+- Do not create handwritten `.po` files. Generated translation files must come from Odoo's export workflow.
 - Do not skip security review for controllers, public model methods, raw SQL, HTML/QWeb generation, or domain construction.
 - Do not use this skill as proof that code is Odoo 19-compatible; verify syntax/API separately when needed.

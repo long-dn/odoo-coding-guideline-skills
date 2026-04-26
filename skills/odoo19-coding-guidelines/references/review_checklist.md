@@ -23,6 +23,7 @@ Use this checklist before finalizing a change or when reviewing an Odoo module.
 - Model class members are in conventional order.
 - Action methods use `self.ensure_one()` when single-record.
 - Translatable strings are built inside `_()` with appropriate placeholders.
+- Changes do not add handwritten `i18n/*.po`; translations are exported from Odoo.
 - Code favors ORM operations unless SQL is justified.
 
 ## Frontend
