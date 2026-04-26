@@ -42,7 +42,7 @@ Supported agents in this repo:
 
 | Skill | What it covers | Status |
 |---|---|---|
-| [`odoo19-coding-guidelines`](./skills/odoo19-coding-guidelines/) | Official Odoo 19 coding guidelines for module structure, XML records, Python style, ORM conventions, translation export, JS, SCSS, and security review | Initial |
+| [`odoo19-coding-guidelines`](./skills/odoo19-coding-guidelines/) | Official Odoo 19 coding guidelines for module structure, XML records/accessibility, Python style, ORM conventions, translation export, JS, SCSS, and security review | Initial |
 
 ## How It Works
 

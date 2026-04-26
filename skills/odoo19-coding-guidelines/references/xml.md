@@ -58,6 +58,38 @@ Do not churn existing external ids unless migration is part of the task.
 - Keep dynamic text translatable when user-visible.
 - Avoid unsafe raw HTML output; load `security.md` for HTML or Markup handling.
 
+## Icon accessibility
+
+Odoo validates Font Awesome icons in views and templates. A bare icon is not acceptable if it has no accessible label or adjacent text.
+
+Any `<i>` tag with a Font Awesome class such as `fa`, `fa-*`, or `fa fa-*` must have one of:
+
+- A `title` attribute on the `<i>` tag itself.
+- A `title` on a parent element.
+- A `title` on a descendant element.
+- Visible text associated with the icon.
+
+Good:
+
+```xml
+<i class="fa fa-exclamation-triangle me-2" title="Credit limit warning"/>
+<span title="Credit limit warning">
+    <i class="fa fa-exclamation-triangle me-2"/>
+</span>
+<span>
+    <i class="fa fa-exclamation-triangle me-2"/>
+    Credit limit exceeded
+</span>
+```
+
+Avoid:
+
+```xml
+<i class="fa fa-exclamation-triangle me-2"/>
+```
+
+This avoids warnings such as: `A <i> with fa class (...) must have title in its tag, parents, descendants or have text`.
+
 ## Review cues
 
 Flag these in reviews:
@@ -67,3 +99,4 @@ Flag these in reviews:
 - XML ids too generic for maintenance.
 - Demo records placed in production data files.
 - View XML mixed with security, report, or demo records without an existing module convention.
+- Font Awesome `<i>` icons without `title` or visible text.

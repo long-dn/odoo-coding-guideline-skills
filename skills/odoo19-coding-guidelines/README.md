@@ -2,12 +2,12 @@
 
 > Official Odoo 19 coding guideline reference for AI coding agents.
 
-This skill helps assistants write and review Odoo modules with the official Odoo 19 coding style: module structure, XML records, Python idioms, Odoo naming conventions, translation export rules, JavaScript, SCSS, and security pitfalls.
+This skill helps assistants write and review Odoo modules with the official Odoo 19 coding style: module structure, XML records/accessibility, Python idioms, Odoo naming conventions, translation export rules, JavaScript, SCSS, and security pitfalls.
 
 ## What it covers
 
 - Module structure and file naming.
-- XML record formatting, ids, data files, menus, views, and templates.
+- XML record formatting, ids, data files, menus, views, templates, and Font Awesome icon accessibility.
 - Python readability, single-quote string style, idioms, imports, comments, and translations.
 - Translation file rule: do not create handwritten `i18n/*.po`; use Odoo export.
 - Odoo model, field, method, and class ordering conventions.

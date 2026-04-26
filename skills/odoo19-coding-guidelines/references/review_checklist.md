@@ -15,6 +15,7 @@ Use this checklist before finalizing a change or when reviewing an Odoo module.
 - `<data>` is reserved for noupdate use.
 - Production data and demo data are split.
 - QWeb output does not introduce unsafe HTML.
+- Font Awesome `<i class="fa ...">` icons have text or a `title` on the icon, parent, or descendant.
 
 ## Python and ORM
 
