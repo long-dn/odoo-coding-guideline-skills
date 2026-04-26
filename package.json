@@ -1,0 +1,32 @@
+{
+  "name": "odoo-coding-guideline-skills",
+  "version": "0.1.0",
+  "description": "Standard SKILL.md agent skills for Odoo coding guidelines, installed with npx skills add.",
+  "private": true,
+  "scripts": {
+    "test": "npx skills add . --list"
+  },
+  "keywords": [
+    "ai",
+    "agent-skills",
+    "skills",
+    "codex",
+    "gemini-cli",
+    "claude-code",
+    "cursor",
+    "github-copilot",
+    "odoo",
+    "odoo-19",
+    "coding-guidelines"
+  ],
+  "author": "odoo-coding-guideline-skills contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/long-dn/odoo-coding-guideline-skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/long-dn/odoo-coding-guideline-skills/issues"
+  },
+  "homepage": "https://github.com/long-dn/odoo-coding-guideline-skills#readme"
+}
