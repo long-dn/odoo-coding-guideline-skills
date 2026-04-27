@@ -14,7 +14,7 @@ Reason:
 - Manual generation is easy to make stale, incomplete, or noisy.
 - Export is more exact and usually smaller because it includes the real module terms.
 
-When a task adds or changes translatable strings, update the source code/XML only. Tell the user that translation files should be regenerated with Odoo export.
+When a task adds or changes translatable strings, update the source code/XML only. Source strings must be English. Tell the user that translation files should be regenerated with Odoo export.
 
 ## Allowed files
 
@@ -73,4 +73,5 @@ Flag these in reviews:
 - New `.po` files authored directly by an agent or script instead of exported.
 - `.po` entries that do not correspond to source terms.
 - Translation changes mixed into unrelated code changes.
+- Non-English source strings in Python/XML instead of English source plus exported translations.
 - English source strings changed only to satisfy a generated `.po` file.

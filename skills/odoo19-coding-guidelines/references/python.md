@@ -1,6 +1,6 @@
 # Python Guidelines
 
-Use this reference for Python style, imports, readability, comments, string quotes, and translations.
+Use this reference for Python style, imports, readability, comments, string quotes, English source text, and translations.
 
 Source: official Odoo 19 coding guidelines, "Programming in Odoo", "Idiomatic Python", and translation guidance.
 
@@ -84,12 +84,18 @@ Guidelines:
 
 ## Translations
 
+All user-facing source text in Python must be written in English. This includes field `string`, `help`, `default` labels, constraint messages, `ValidationError` / `UserError` messages, wizard text, log notes shown to users, and notification bodies.
+
+Non-English text belongs in exported translation files, not in the Python source.
+
 Keep interpolation inside `_()` so translators see the full sentence.
 
 Good:
 
 ```python
 message = _("Order %(name)s cannot be confirmed.", name=order.name)
+raise ValidationError(_('The approver must be an internal user, not a portal or public user.'))
+name = fields.Char(string='Approval Name', help='Name shown on approval requests.')
 ```
 
 Avoid:
@@ -97,10 +103,13 @@ Avoid:
 ```python
 message = _("Order %s cannot be confirmed.") % order.name
 message = _("Order ") + order.name + _(" cannot be confirmed.")
+raise ValidationError(_('Người duyệt phải là người dùng nội bộ (không phải portal/public).'))
+name = fields.Char(string='Tên phê duyệt', help='Tên hiển thị trên yêu cầu phê duyệt.')
 ```
 
 Guidelines:
 
+- Use English as the source language even for projects primarily used in another language.
 - Use named placeholders when more than one variable is present.
 - Do not build translatable sentences by concatenating translated fragments.
 - Prefer `%`-style placeholders in Odoo translatable strings.
@@ -115,6 +124,7 @@ Flag these in reviews:
 - Pointless temporary variables that make code longer without improving meaning.
 - `len(collection)` used only as a truthiness check.
 - Double-quoted Python string literals in new or modified code where single quotes would work.
+- Non-English user-facing source text in `string`, `help`, exceptions, notifications, or wizard messages.
 - Translated strings assembled through concatenation or interpolation outside `_()`.
 - Handwritten or manually patched `i18n/*.po` files in coding changes.
 - Comments explaining obvious assignments instead of business intent.

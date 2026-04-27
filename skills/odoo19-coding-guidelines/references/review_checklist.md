@@ -15,6 +15,7 @@ Use this checklist before finalizing a change or when reviewing an Odoo module.
 - `<data>` is reserved for noupdate use.
 - Production data and demo data are split.
 - QWeb output does not introduce unsafe HTML.
+- User-facing XML source text is English; translations handle other languages.
 - Font Awesome `<i class="fa ...">` icons have text or a `title` on the icon, parent, or descendant.
 
 ## Python and ORM
@@ -25,6 +26,7 @@ Use this checklist before finalizing a change or when reviewing an Odoo module.
 - Fields with `tracking=True` or `tracking=<sequence>` are only on models inheriting `mail.thread` or a mixin/model that inherits it.
 - Model class members are in conventional order.
 - Action methods use `self.ensure_one()` when single-record.
+- User-facing Python source text is English in field labels/help, exceptions, notifications, and wizard messages.
 - Translatable strings are built inside `_()` with appropriate placeholders.
 - Changes do not add handwritten `i18n/*.po`; translations are exported from Odoo.
 - Code favors ORM operations unless SQL is justified.

@@ -56,6 +56,7 @@ Do not churn existing external ids unless migration is part of the task.
 
 - Keep template names explicit and module-prefixed.
 - Keep dynamic text translatable when user-visible.
+- Use English for all user-facing source text in XML: labels, button text, menu/action names, help text, placeholders, titles, tooltips, and QWeb text. Non-English text belongs in exported translations.
 - Avoid unsafe raw HTML output; load `security.md` for HTML or Markup handling.
 
 ## Icon accessibility
@@ -82,6 +83,20 @@ Good:
 </span>
 ```
 
+For ordinary labels:
+
+```xml
+<field name="name" string="Approval Name"/>
+<button name="action_approve" string="Approve" type="object"/>
+```
+
+Avoid non-English source text:
+
+```xml
+<field name="name" string="Tên phê duyệt"/>
+<button name="action_approve" string="Phê duyệt" type="object"/>
+```
+
 Avoid:
 
 ```xml
@@ -97,6 +112,7 @@ Flag these in reviews:
 - `<data>` wrappers with no `noupdate`.
 - Field attributes ordered inconsistently in new code.
 - XML ids too generic for maintenance.
+- Non-English user-facing source text in labels, help, titles, placeholders, menus, actions, or templates.
 - Demo records placed in production data files.
 - View XML mixed with security, report, or demo records without an existing module convention.
 - Font Awesome `<i>` icons without `title` or visible text.

@@ -1,5 +1,9 @@
 # Changelog - odoo19-coding-guidelines
 
+## [0.1.5] - 2026-04-27
+
+Require English source text for user-facing labels, field strings/help, exceptions, menus, actions, and templates.
+
 ## [0.1.4] - 2026-04-27
 
 Clarify that field `tracking` requires `mail.thread`; `mail.activity.mixin` alone is not enough.
