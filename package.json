@@ -1,6 +1,6 @@
 {
   "name": "odoo-coding-guideline-skills",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Standard SKILL.md agent skills for Odoo coding guidelines, installed with npx skills add.",
   "private": true,
   "scripts": {

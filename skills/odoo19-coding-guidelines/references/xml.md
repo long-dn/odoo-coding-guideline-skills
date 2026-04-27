@@ -59,6 +59,24 @@ Do not churn existing external ids unless migration is part of the task.
 - Use English for all user-facing source text in XML: labels, button text, menu/action names, help text, placeholders, titles, tooltips, and QWeb text. Non-English text belongs in exported translations.
 - Avoid unsafe raw HTML output; load `security.md` for HTML or Markup handling.
 
+## Form views
+
+Do not add the technical `active` field directly on form views.
+
+Avoid:
+
+```xml
+<form>
+    <sheet>
+        <group>
+            <field name="active"/>
+        </group>
+    </sheet>
+</form>
+```
+
+Use Odoo's standard archive/unarchive behavior instead of exposing `active` as an editable form field. If a model needs archive behavior, define the `active` field on the model and let the UI handle archiving through the standard actions.
+
 ## Icon accessibility
 
 Odoo validates Font Awesome icons in views and templates. A bare icon is not acceptable if it has no accessible label or adjacent text.
@@ -113,6 +131,7 @@ Flag these in reviews:
 - Field attributes ordered inconsistently in new code.
 - XML ids too generic for maintenance.
 - Non-English user-facing source text in labels, help, titles, placeholders, menus, actions, or templates.
+- `<field name="active">` shown directly in a form view.
 - Demo records placed in production data files.
 - View XML mixed with security, report, or demo records without an existing module convention.
 - Font Awesome `<i>` icons without `title` or visible text.

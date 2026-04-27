@@ -1,5 +1,9 @@
 # Changelog - odoo19-coding-guidelines
 
+## [0.1.6] - 2026-04-27
+
+Block direct display of the technical `active` field on form views.
+
 ## [0.1.5] - 2026-04-27
 
 Require English source text for user-facing labels, field strings/help, exceptions, menus, actions, and templates.

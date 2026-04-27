@@ -14,6 +14,7 @@ Use this checklist before finalizing a change or when reviewing an Odoo module.
 - `<record>` attributes and `<field>` attributes follow guideline order in new code.
 - `<data>` is reserved for noupdate use.
 - Production data and demo data are split.
+- Form views do not include `<field name="active">`.
 - QWeb output does not introduce unsafe HTML.
 - User-facing XML source text is English; translations handle other languages.
 - Font Awesome `<i class="fa ...">` icons have text or a `title` on the icon, parent, or descendant.
