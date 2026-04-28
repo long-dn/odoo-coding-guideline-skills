@@ -1,5 +1,9 @@
 # Changelog - odoo19-coding-guidelines
 
+## [0.1.7] - 2026-04-28
+
+Require multi-line XML tag attributes to be indented at least one full indentation level from the opening tag line.
+
 ## [0.1.6] - 2026-04-27
 
 Block direct display of the technical `active` field on form views.

@@ -12,6 +12,7 @@ Use this checklist before finalizing a change or when reviewing an Odoo module.
 
 - Records use stable, meaningful external ids.
 - `<record>` attributes and `<field>` attributes follow guideline order in new code.
+- Multi-line XML tag attributes are indented at least one full level from the opening tag line.
 - `<data>` is reserved for noupdate use.
 - Production data and demo data are split.
 - Form views do not include `<field name="active">`.

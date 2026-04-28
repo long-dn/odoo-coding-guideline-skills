@@ -13,6 +13,9 @@ Prefer `<record>` declarations for records.
 - Put the value in the tag body or in `eval`, then put other attributes such as `widget` and `options` by importance.
 - Group records by model where dependencies do not force another order.
 - Use `<data>` only for `noupdate="1"` data. If the whole file is noupdate, put `noupdate="1"` on `<odoo>`.
+- Use 4 spaces per XML indentation level. When a start tag is split across
+  multiple lines, indent each continuation attribute by at least one full
+  indentation level from the line containing the opening tag.
 
 ```xml
 <record id="view_example_form" model="ir.ui.view">
@@ -24,6 +27,29 @@ Prefer `<record>` declarations for records.
         </form>
     </field>
 </record>
+```
+
+Good:
+
+```xml
+<field name="arch" type="xml">
+    <list decoration-success="state == 'fulfilled'"
+          decoration-muted="state in ('expired', 'cancelled')">
+        <field name="subject"/>
+    </list>
+</field>
+```
+
+Avoid continuation indentation that is not at least one full level deeper than
+the opening tag:
+
+```xml
+<field name="arch" type="xml">
+    <list decoration-success="state == 'fulfilled'"
+      decoration-muted="state in ('expired', 'cancelled')">
+        <field name="subject"/>
+    </list>
+</field>
 ```
 
 ## External ids
@@ -129,6 +155,7 @@ Flag these in reviews:
 
 - `<data>` wrappers with no `noupdate`.
 - Field attributes ordered inconsistently in new code.
+- Multi-line XML tag attributes whose continuation indentation is less than one full indentation level.
 - XML ids too generic for maintenance.
 - Non-English user-facing source text in labels, help, titles, placeholders, menus, actions, or templates.
 - `<field name="active">` shown directly in a form view.
