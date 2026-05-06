@@ -1,5 +1,13 @@
 # Changelog - odoo19-coding-guidelines
 
+## [0.1.9] - 2026-05-06
+
+Block the removed `doall` field in Odoo 19 `ir.cron` XML records.
+
+## [0.1.8] - 2026-05-02
+
+Require administrator `res.groups` XML records to assign both root and admin users.
+
 ## [0.1.7] - 2026-04-28
 
 Require multi-line XML tag attributes to be indented at least one full indentation level from the opening tag line.

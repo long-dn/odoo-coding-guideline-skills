@@ -78,6 +78,52 @@ Do not churn existing external ids unless migration is part of the task.
 - Use `noupdate="1"` for stable configuration that should not be overwritten on module update.
 - Keep mail templates, scheduled actions, sequences, and security XML in discoverable files.
 
+## Scheduled actions
+
+When defining `ir.cron` records in Odoo 19 XML, do not declare the removed
+`doall` field. Leaving it in the XML raises a parse error such as
+`ValueError: Invalid field 'doall' in 'ir.cron'`.
+
+Avoid:
+
+```xml
+<record id="ir_cron_example" model="ir.cron">
+    <field name="name">Example: Daily Batch</field>
+    <field name="model_id" ref="base.model_res_partner"/>
+    <field name="state">code</field>
+    <field name="code">model._cron_example()</field>
+    <field name="interval_number">1</field>
+    <field name="interval_type">days</field>
+    <field name="doall" eval="False"/>
+</record>
+```
+
+Use:
+
+```xml
+<record id="ir_cron_example" model="ir.cron">
+    <field name="name">Example: Daily Batch</field>
+    <field name="model_id" ref="base.model_res_partner"/>
+    <field name="state">code</field>
+    <field name="code">model._cron_example()</field>
+    <field name="interval_number">1</field>
+    <field name="interval_type">days</field>
+    <field name="active" eval="True"/>
+</record>
+```
+
+## Security groups
+
+When defining an administrator group in XML, explicitly assign both root and
+admin users so the group is available to the standard administrator accounts:
+
+```xml
+<record id="group_example_administrator" model="res.groups">
+    <field name="name">Administrator</field>
+    <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+</record>
+```
+
 ## QWeb and templates
 
 - Keep template names explicit and module-prefixed.
@@ -159,6 +205,8 @@ Flag these in reviews:
 - XML ids too generic for maintenance.
 - Non-English user-facing source text in labels, help, titles, placeholders, menus, actions, or templates.
 - `<field name="active">` shown directly in a form view.
+- `ir.cron` records declaring the removed `doall` field.
+- Administrator `res.groups` records without both `base.user_root` and `base.user_admin` in `user_ids`.
 - Demo records placed in production data files.
 - View XML mixed with security, report, or demo records without an existing module convention.
 - Font Awesome `<i>` icons without `title` or visible text.
