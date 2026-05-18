@@ -16,7 +16,7 @@ Use this checklist before finalizing a change or when reviewing an Odoo module.
 - `<data>` is reserved for noupdate use.
 - Production data and demo data are split.
 - `ir.cron` XML records do not declare the removed `doall` field.
-- Administrator `res.groups` records include `base.user_root` and `base.user_admin` in `user_ids`.
+- Privileged module `res.groups` records such as Administrator, Manager, or equivalent top-level roles include `base.user_root` and `base.user_admin` in `user_ids`.
 - Form views do not include `<field name="active">`.
 - QWeb output does not introduce unsafe HTML.
 - User-facing XML source text is English; translations handle other languages.

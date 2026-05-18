@@ -53,7 +53,7 @@ For a code review, load the domain references matching the changed files plus `r
 ## Self-check
 
 - Module files use lowercase `[a-z0-9_]` names and standard directories.
-- XML records use consistent attribute order, grouped models, stable external ids, proper multi-line attribute indentation, Odoo 19-compatible `ir.cron` fields, administrator group user assignment, and minimal `<data>` wrappers.
+- XML records use consistent attribute order, grouped models, stable external ids, proper multi-line attribute indentation, Odoo 19-compatible `ir.cron` fields, privileged group user assignment, and minimal `<data>` wrappers.
 - Form views do not expose the technical `active` field directly.
 - Font Awesome `<i class="fa ...">` icons in XML/QWeb have accessible text or a `title` on the icon, parent, or descendant.
 - Python favors readability, single-quoted strings, meaningful names, idiomatic dict/list handling, and clear comments only where useful.

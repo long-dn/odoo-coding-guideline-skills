@@ -114,12 +114,13 @@ Use:
 
 ## Security groups
 
-When defining an administrator group in XML, explicitly assign both root and
-admin users so the group is available to the standard administrator accounts:
+When defining privileged module groups in XML, such as `Administrator`,
+`Manager`, or equivalent top-level roles, explicitly assign both root and admin
+users so those groups are available to the standard administrator accounts:
 
 ```xml
-<record id="group_example_administrator" model="res.groups">
-    <field name="name">Administrator</field>
+<record id="group_example_manager" model="res.groups">
+    <field name="name">Manager</field>
     <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
 </record>
 ```
@@ -206,7 +207,7 @@ Flag these in reviews:
 - Non-English user-facing source text in labels, help, titles, placeholders, menus, actions, or templates.
 - `<field name="active">` shown directly in a form view.
 - `ir.cron` records declaring the removed `doall` field.
-- Administrator `res.groups` records without both `base.user_root` and `base.user_admin` in `user_ids`.
+- Privileged module `res.groups` records such as Administrator, Manager, or equivalent top-level roles without both `base.user_root` and `base.user_admin` in `user_ids`.
 - Demo records placed in production data files.
 - View XML mixed with security, report, or demo records without an existing module convention.
 - Font Awesome `<i>` icons without `title` or visible text.

@@ -1,5 +1,9 @@
 # Changelog - odoo19-coding-guidelines
 
+## [0.1.10] - 2026-05-18
+
+Extend automatic root/admin assignment from administrator groups to privileged module groups such as manager roles.
+
 ## [0.1.9] - 2026-05-06
 
 Block the removed `doall` field in Odoo 19 `ir.cron` XML records.
