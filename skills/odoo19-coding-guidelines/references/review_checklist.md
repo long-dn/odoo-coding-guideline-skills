@@ -15,6 +15,8 @@ Use this checklist before finalizing a change or when reviewing an Odoo module.
 - Multi-line XML tag attributes are indented at least one full level from the opening tag line.
 - `<data>` is reserved for noupdate use.
 - Production data and demo data are split.
+- Structural containers such as `group`, `page`, `notebook`, `div`, and `separator` have stable `name` or `id` anchors when they may be inherited.
+- View inheritance xpaths do not use `@string` selectors.
 - `ir.cron` XML records do not declare the removed `doall` field.
 - Privileged module `res.groups` records such as Administrator, Manager, or equivalent top-level roles include `base.user_root` and `base.user_admin` in `user_ids`.
 - Form views do not include `<field name="active">`.
@@ -28,6 +30,7 @@ Use this checklist before finalizing a change or when reviewing an Odoo module.
 - Python string literals use single quotes in new or modified code, except docstrings or cases where double quotes avoid escaping.
 - Field suffixes match field types.
 - Fields with `tracking=True` or `tracking=<sequence>` are only on models inheriting `mail.thread` or a mixin/model that inherits it.
+- Computed fields with recursive dependencies declare `recursive=True`.
 - Model class members are in conventional order.
 - Action methods use `self.ensure_one()` when single-record.
 - User-facing Python source text is English in field labels/help, exceptions, notifications, and wizard messages.

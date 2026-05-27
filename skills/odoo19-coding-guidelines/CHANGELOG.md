@@ -1,5 +1,13 @@
 # Changelog - odoo19-coding-guidelines
 
+## [0.1.12] - 2026-05-27
+
+Require stable XML view inheritance anchors and block xpath selectors using `@string`.
+
+## [0.1.11] - 2026-05-21
+
+Require `recursive=True` on computed fields with recursive dependencies.
+
 ## [0.1.10] - 2026-05-18
 
 Extend automatic root/admin assignment from administrator groups to privileged module groups such as manager roles.

@@ -3,7 +3,7 @@ name: odoo19-coding-guidelines
 description: >-
   Official Odoo 19 coding guideline reference for AI coding agents. Use this
   skill before writing, modifying, or reviewing Odoo modules when the work
-  involves module layout, file naming, XML records, form views, view accessibility, Python style, ORM
+  involves module layout, file naming, XML records, form views, view inheritance selectors, view accessibility, Python style, ORM
   conventions, model/method/field naming, field tracking, English source text, translations, `i18n/`, `.po`, `.pot`,
   translation export, JavaScript, SCSS, or security pitfalls. Trigger on Odoo
   coding requests such as "create an addon", "review this module", "fix this
@@ -54,10 +54,13 @@ For a code review, load the domain references matching the changed files plus `r
 
 - Module files use lowercase `[a-z0-9_]` names and standard directories.
 - XML records use consistent attribute order, grouped models, stable external ids, proper multi-line attribute indentation, Odoo 19-compatible `ir.cron` fields, privileged group user assignment, and minimal `<data>` wrappers.
+- XML containers such as `group`, `page`, `div`, `notebook`, and `separator` have stable `name` or `id` anchors when other modules may inherit them.
+- View inheritance xpaths do not use user-facing `string` as a selector.
 - Form views do not expose the technical `active` field directly.
 - Font Awesome `<i class="fa ...">` icons in XML/QWeb have accessible text or a `title` on the icon, parent, or descendant.
 - Python favors readability, single-quoted strings, meaningful names, idiomatic dict/list handling, and clear comments only where useful.
 - Odoo names follow conventions: singular model names, `_id`/`_ids` suffixes, `_compute_*`, `_onchange_*`, `_check_*`, `action_*`.
+- Computed fields with recursive dependencies declare `recursive=True`.
 - Use field `tracking` only on models inheriting `mail.thread` or a mixin/model that inherits it; `mail.activity.mixin` alone is not enough.
 - Model classes are ordered from private attributes to defaults, fields, constraints, compute methods, onchange/constraints, CRUD, actions, then business methods.
 - User-facing source strings in Python/XML are written in English; other languages belong in translations.

@@ -75,6 +75,37 @@ Important:
 - Do not override `_valid_field_parameter` merely to silence the warning. That hook is for framework-level extensions; for normal business models, either inherit `mail.thread` or remove `tracking`.
 - The warning to prevent is: `unknown parameter 'tracking'`.
 
+### `recursive`
+
+Declare `recursive=True` on computed fields whose dependencies recurse through
+the same model, typically through parent/child relationships.
+
+Good:
+
+```python
+allow_door_hold = fields.Boolean(
+    compute='_compute_allow_door_hold',
+    recursive=True,
+)
+
+@api.depends('parent_id.allow_door_hold')
+def _compute_allow_door_hold(self):
+    ...
+```
+
+Avoid leaving recursive computed dependencies without the field parameter:
+
+```python
+allow_door_hold = fields.Boolean(compute='_compute_allow_door_hold')
+
+@api.depends('parent_id.allow_door_hold')
+def _compute_allow_door_hold(self):
+    ...
+```
+
+The warning to prevent is:
+`Field <model>.<field> should be declared with recursive=True`.
+
 ## Method names
 
 - Compute methods: `_compute_<field_name>`.
@@ -108,6 +139,7 @@ Flag these in reviews:
 - Recordsets stored in variables ending with `_id`.
 - `Many2one` fields without `_id` or x2many fields without `_ids`.
 - `tracking=True` on a model that does not inherit `mail.thread`.
+- Computed fields with recursive dependencies, such as `parent_id.<same_field>`, missing `recursive=True`.
 - Action methods that silently process multi-record sets when the UI action is single-record.
 - New methods placed randomly in a model class instead of near their convention group.
 - Plural model technical names.

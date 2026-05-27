@@ -150,6 +150,73 @@ Avoid:
 
 Use Odoo's standard archive/unarchive behavior instead of exposing `active` as an editable form field. If a model needs archive behavior, define the `active` field on the model and let the UI handle archiving through the standard actions.
 
+## View inheritance anchors
+
+Make inherited views stable for downstream modules. Structural containers that
+other modules may need to target should have a technical `name` or `id`.
+
+Add stable anchors to containers such as:
+
+- `<group>`
+- `<page>`
+- `<notebook>`
+- `<div>`
+- `<separator>`
+- `<header>` blocks when custom targeting is expected
+
+Good:
+
+```xml
+<page name="metadata" string="Metadata">
+    <group name="metadata_group">
+        <field name="create_uid"/>
+    </group>
+</page>
+```
+
+For HTML-like blocks in views or QWeb templates:
+
+```xml
+<div id="credit_limit_warning" class="alert alert-warning">
+    Credit limit exceeded
+</div>
+```
+
+Avoid anonymous containers that force fragile downstream xpaths:
+
+```xml
+<page string="Metadata">
+    <group>
+        <field name="create_uid"/>
+    </group>
+</page>
+```
+
+## View inheritance selectors
+
+Never use user-facing `string` text as an xpath selector in inherited views.
+Odoo rejects selectors like `//page[@string='Metadata']` with:
+`View inheritance may not use attribute 'string' as a selector`.
+
+Use technical anchors such as `@name`, `@id`, field names, or stable class/id
+attributes instead.
+
+Good:
+
+```xml
+<xpath expr="//page[@name='metadata']" position="before">
+    <page name="approval" string="Approval"/>
+</xpath>
+```
+
+Avoid:
+
+```xml
+<xpath expr="//page[@string='Metadata']" position="before">
+    <page name="approval" string="Approval"/>
+</xpath>
+```
+
 ## Icon accessibility
 
 Odoo validates Font Awesome icons in views and templates. A bare icon is not acceptable if it has no accessible label or adjacent text.
@@ -204,6 +271,8 @@ Flag these in reviews:
 - Field attributes ordered inconsistently in new code.
 - Multi-line XML tag attributes whose continuation indentation is less than one full indentation level.
 - XML ids too generic for maintenance.
+- Anonymous structural containers such as `group`, `page`, `notebook`, `div`, or `separator` when a stable `name` or `id` anchor should be provided.
+- XPath selectors using `@string`, for example `//page[@string='Metadata']`.
 - Non-English user-facing source text in labels, help, titles, placeholders, menus, actions, or templates.
 - `<field name="active">` shown directly in a form view.
 - `ir.cron` records declaring the removed `doall` field.
